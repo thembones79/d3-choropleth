@@ -195,8 +195,43 @@ const render = (usa, edu) => {
        .attr("text-anchor", "start")
        .text(title);
 
-  console.log({ edu });
 
+
+
+  const legenda = svg
+    .append("g")
+    .attr("id", "legend")
+    .style(
+      "transform",
+      `translate(500px,50px)`
+    );
+
+  legenda.append("text").text("Legend:");
+
+const legendaScale = d3
+  .scaleLinear()
+  .domain([0,100])
+  .range([250, 700])
+  .nice();
+
+legenda
+  .selectAll("rect")
+  .data(edu)
+  .enter()
+  .append("rect")
+  .attr("class", "cell")
+  .attr("y", -18)
+  .attr("x", d => legendaScale(d.bachelorsOrHigher) - 165)
+  .attr("width", 2)
+  .attr("height", 500)
+  .style("fill", d => colorScale(d.bachelorsOrHigher));
+
+
+
+
+
+  console.log({ edu });
+/*
   const baseTemperature = data.baseTemperature;
   const xValue = d => d.year;
   const xAxisLabel = "Year";
@@ -338,18 +373,18 @@ const render = (usa, edu) => {
     .attr("y", 45)
     .attr("x", innerWidth / 2)
     .text(xAxisLabel);
+*/
 
 
-
-  const legend = g
+  const legend = svg
     .append("g")
     .attr("id", "legend")
     .style(
       "transform",
-      `translate(300px,${innerHeight + margin.bottom - 20}px)`
+      `translate(500px,80px)`
     );
 
-  legend.append("text").text("Legend:");
+  legend.append("text").text("Legend2:");
 
   const legendGenerator = n => {
     let legendArr = [];
