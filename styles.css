@@ -27,8 +27,8 @@ body {
   position: absolute;
   text-align: center;
   flex-direction: column;
-  width: 1440px;
-  height: 800px;
+  width: 1100px;
+  height: 750px;
   box-shadow: 1px 24px 58px #0000004f;
   border-radius: 24px;
 }
@@ -40,9 +40,9 @@ body {
 #title > h1 {
   font-weight: 100;
   color: #8888888f;
-  font-size: 3em;
-  margin-left: 90px;
-  margin-bottom: 30px;
+  font-size: 2.85em;
+  margin-left: 0px;
+  margin-bottom: 20px;
 }
 
 #tooltip {
@@ -70,6 +70,7 @@ text {
 
 .bigger_text {
   font-size: 1.4em;
+  font-weight: 100;
 }
 
 .tick text {
@@ -79,6 +80,7 @@ text {
 
 .tick line {
   stroke: black;
+  stroke-opacity: 0.5;
 }
 
 .axis-label {
