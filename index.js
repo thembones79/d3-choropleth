@@ -381,15 +381,15 @@ legenda
     .attr("id", "legend")
     .style(
       "transform",
-      `translate(500px,80px)`
+      `translate(200px,80px)`
     );
 
   legend.append("text").text("Legend2:");
 
   const legendGenerator = n => {
     let legendArr = [];
-    const maxVal = d3.max(data.monthlyVariance, d => temperature(d));
-    const minVal = d3.min(data.monthlyVariance, d => temperature(d));
+    const maxVal = d3.max(edu, d => d.bachelorsOrHigher);
+    const minVal = d3.min(edu, d => d.bachelorsOrHigher);
     const valueLength = maxVal - minVal;
     const chunk = valueLength / n;
     for (let i = 0; i < n; i++) {
@@ -414,8 +414,8 @@ legenda
     .attr("class", "dot")
     .attr("y", -18)
     .attr("x", d => legendScale(d) - 165)
-    .attr("width", rectWidth)
-    .attr("height", yScale.bandwidth() / 2)
+    .attr("width", 2)
+    .attr("height", 10)
     .style("fill", d => colorScale(d));
 
   const legendAxisTickFormat = number =>
