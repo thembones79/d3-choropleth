@@ -68,8 +68,8 @@ const render = (usa, edu) => {
     .attr("data-fips", d => fips(d))
     .attr("data-education", d => bachelors(d))
     .attr("fill", d => colorScale(bachelors(d)))
-    .on("mouseover", (d, i) => {
-      tooltip.style("opacity", 0.8);
+    .on("mouseover", d => {
+      tooltip.style("opacity", 0.7);
       tooltip
         .html(
           `<p class="bigger_text">
@@ -77,12 +77,11 @@ const render = (usa, edu) => {
        </p>
        `
         )
-        .attr("data-education", d => bachelors(d))
-        .style("left", "10px")
-        .style("top", "10px")
-        .style("transform", `translate(115px,75px)`);
+        .attr("data-education", bachelors(d))
+        .style("left", d3.event.pageX - 400 + "px")
+        .style("top", d3.event.pageY - 98 + "px");
     })
-    .on("mouseout", d => {
+    .on("mouseout", function(d) {
       tooltip.style("opacity", 0);
     });
 
